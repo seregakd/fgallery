@@ -3,6 +3,8 @@ import 'package:gallery/repository/api_repository.dart';
 import 'package:gallery/repository/models/photo_list_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'view_photo.dart';
+
 class PhotoList extends StatefulWidget {
   final String routViewPhoto;
   final ApiRepository unsplashApi = ApiRepository();
@@ -83,17 +85,29 @@ class _PhotoListState extends State<PhotoList> {
               GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, widget.routViewPhoto,
-                    arguments: _photoList[i].urls.full,
+                    arguments: _photoList[i].urls.regular,
                   );
+//                  Navigator.push(
+//                    context,
+//                    MaterialPageRoute(
+//                      builder: (context) => ViewPhoto(),
+//                      settings: RouteSettings(
+//                        arguments: _photoList[i].urls.regular,
+//                      ),
+//                    ),
+//                  );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Container(
                     height: 70,
                     width: 70,
-                    child: CachedNetworkImage(
-                      fit: BoxFit.cover,
-                      imageUrl: _photoList[i].urls.small,
+                    child: Hero(
+                      tag: _photoList[i].urls.regular,
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: _photoList[i].urls.small,
+                      ),
                     ),
                   ),
                 ),
