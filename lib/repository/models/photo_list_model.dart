@@ -4,7 +4,7 @@ class PhotoList {
   PhotoList(this.photoList);
 
   PhotoList.fromJsonArray(List json)
-      : photoList = json.map((i) => new PhotoModel.fromJson(i)).toList();
+      : photoList = json.map((i) => PhotoModel.fromJson(i)).toList();
 }
 
 

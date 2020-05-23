@@ -17,9 +17,7 @@ class ApiRepository {
         return null;
       }
 
-      print ("response.data= " + response.data.toString());
-
-      return response.data;
+      return PhotoList.fromJsonArray(response.data).photoList;
     } catch (e) {
       print(e);
     }
