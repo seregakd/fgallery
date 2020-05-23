@@ -3,8 +3,6 @@ import 'package:gallery/repository/api_repository.dart';
 import 'package:gallery/repository/models/photo_list_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'view_photo.dart';
-
 class PhotoList extends StatefulWidget {
   final String routViewPhoto;
   final ApiRepository unsplashApi = ApiRepository();
@@ -87,15 +85,6 @@ class _PhotoListState extends State<PhotoList> {
                   Navigator.pushNamed(context, widget.routViewPhoto,
                     arguments: _photoList[i].urls.regular,
                   );
-//                  Navigator.push(
-//                    context,
-//                    MaterialPageRoute(
-//                      builder: (context) => ViewPhoto(),
-//                      settings: RouteSettings(
-//                        arguments: _photoList[i].urls.regular,
-//                      ),
-//                    ),
-//                  );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
@@ -120,7 +109,13 @@ class _PhotoListState extends State<PhotoList> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     if (_photoList[i].user.name != null)
-                      Text(_photoList[i].user.name + "\n"),
+                      Text(
+                        _photoList[i].user.name + "\n",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        )
+                      ),
                     if (_photoList[i].description != null)
                       Text(_photoList[i].description),
                   ],
