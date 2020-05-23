@@ -109,15 +109,15 @@ class _PhotoListState extends State<PhotoList> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     if (_photoList[i].user.name != null)
-                      Text(
-                        _photoList[i].user.name + "\n",
+                       Text(
+                        _photoList[i].user.name,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         )
                       ),
                     if (_photoList[i].description != null)
-                      Text(_photoList[i].description),
+                      Text("\n" + _photoList[i].description),
                   ],
                 ),
               ),
